@@ -2,6 +2,10 @@
 
 namespace ApiBibleClient\Api\Model;
 
+/**
+ * Class Language
+ * @package ApiBibleClient\Api\Model
+ */
 class Language {
 
     /** @var string */
@@ -22,10 +26,10 @@ class Language {
         string $script,
         string $scriptDirection
     ) {
-        $this->id = $id;
-        $this->name = $name;
-        $this->nameLocal = $nameLocal;
-        $this->script = $script;
+        $this->id              = $id;
+        $this->name            = $name;
+        $this->nameLocal       = $nameLocal;
+        $this->script          = $script;
         $this->scriptDirection = $scriptDirection;
     }
 

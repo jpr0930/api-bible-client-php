@@ -2,6 +2,10 @@
 
 namespace ApiBibleClient\Api\Model;
 
+/**
+ * Class Country
+ * @package ApiBibleClient\Api\Model
+ */
 class Country {
 
     /** @var string */
@@ -16,8 +20,8 @@ class Country {
         string $name,
         string $nameLocal
     ) {
-        $this->id = $id;
-        $this->name = $name;
+        $this->id        = $id;
+        $this->name      = $name;
         $this->nameLocal = $nameLocal;
     }
 

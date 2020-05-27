@@ -2,6 +2,12 @@
 
 namespace ApiBibleClient\Exception;
 
-class HttpException extends \Exception {
+use Exception;
+
+/**
+ * Class HttpException
+ * @package ApiBibleClient\Exception
+ */
+class HttpException extends Exception {
 
 }

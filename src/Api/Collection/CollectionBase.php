@@ -2,14 +2,74 @@
 
 namespace ApiBibleClient\Api\Collection;
 
-abstract class CollectionBase implements \ArrayAccess, \Countable, \IteratorAggregate, \JsonSerializable {
+use ArrayAccess;
+use ArrayIterator;
+use Countable;
+use InvalidArgumentException;
+use IteratorAggregate;
+use JsonSerializable;
+use OutOfBoundsException;
+
+/**
+ * Class CollectionBase
+ * @package ApiBibleClient\Api\Collection
+ */
+abstract class CollectionBase implements ArrayAccess, Countable, IteratorAggregate, JsonSerializable {
+    /** @var array */
     protected $elements = [];
+    /** @var string */
     protected $acceptedType;
 
+    /**
+     * CollectionBase constructor.
+     * @param string         $acceptedType
+     * @param array|iterable $values
+     */
     public function __construct(string $acceptedType, iterable $values = []) {
         $this->acceptedType = $acceptedType;
         foreach ($values as $key => $value) {
             $this->offsetSet($key, $value);
+        }
+    }
+
+    /**
+     * Implementation of \ArrayAccess::OffsetSet
+     *
+     * This enforces all values in the collection are of compatible types
+     *
+     * @param mixed $offset
+     * @param mixed $value
+     * @throws InvalidArgumentException if an unsuitable object is offered for insertion
+     */
+    public function offsetSet($offset, $value) {
+        if (!$value instanceof $this->acceptedType) {
+            throw new InvalidArgumentException("Only objects of type '{$this->acceptedType}' are accepted");
+        }
+
+        if ($offset === null) {
+            $this->elements[] = $value;
+        } else {
+            $this->elements[$offset] = $value;
+        }
+    }
+
+    /**
+     * Implementation of \ArrayAccess::offsetGet
+     *
+     * @throws OutOfBoundsException if the offset does not exist
+     *
+     */
+    public function offsetGet($key) {
+        $this->assertOffsetExists($key);
+        return $this->elements[$key];
+    }
+
+    /**
+     * @param $key
+     */
+    private function assertOffsetExists($key) {
+        if (!$this->offsetExists($key)) {
+            throw new OutOfBoundsException("No entry found for '{$key}'");
         }
     }
 
@@ -21,42 +81,9 @@ abstract class CollectionBase implements \ArrayAccess, \Countable, \IteratorAggr
     }
 
     /**
-     * Implementation of \ArrayAccess::offsetGet
-     *
-     * @throws \OutOfBoundsException if the offset does not exist
-     *
-     */
-    public function offsetGet($key) {
-        $this->assertOffsetExists($key);
-        return $this->elements[$key];
-    }
-
-    /**
-     * Implementation of \ArrayAccess::OffsetSet
-     *
-     * This enforces all values in the collection are of compatible types
-     *
-     * @param mixed $offset
-     * @param mixed $value
-     * @throws \InvalidArgumentException if an unsuitable object is offered for insertion
-     */
-    public function offsetSet($offset, $value)
-    {
-        if (!$value instanceof $this->acceptedType) {
-            throw new \InvalidArgumentException("Only objects of type '{$this->acceptedType}' are accepted");
-        }
-
-        if ($offset === null) {
-            $this->elements[] = $value;
-        } else {
-            $this->elements[$offset] = $value;
-        }
-    }
-
-    /**
      * Implementation of \ArrayAccess::offsetUnset
      *
-     * @throws \OutOfBoundsException if the offset does not exist
+     * @throws OutOfBoundsException if the offset does not exist
      *
      */
     public function offsetUnset($key) {
@@ -76,7 +103,7 @@ abstract class CollectionBase implements \ArrayAccess, \Countable, \IteratorAggr
      *
      */
     public function getIterator() {
-        return new \ArrayIterator($this->elements);
+        return new ArrayIterator($this->elements);
     }
 
     /**
@@ -86,14 +113,11 @@ abstract class CollectionBase implements \ArrayAccess, \Countable, \IteratorAggr
         return array_values($this->elements);
     }
 
+    /**
+     * @return bool
+     */
     public function isEmpty(): bool {
         return count($this->elements) === 0;
-    }
-
-    private function assertOffsetExists($key) {
-        if (!$this->offsetExists($key)) {
-            throw new \OutOfBoundsException("No entry found for '{$key}'");
-        }
     }
 
     /**
@@ -101,8 +125,7 @@ abstract class CollectionBase implements \ArrayAccess, \Countable, \IteratorAggr
      *
      * @return array
      */
-    public function jsonSerialize()
-    {
+    public function jsonSerialize() {
         return $this->elements;
     }
 }

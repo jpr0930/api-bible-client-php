@@ -2,6 +2,10 @@
 
 namespace ApiBibleClient\Api\Model;
 
+/**
+ * Class AudioBible
+ * @package ApiBibleClient\Api\Model
+ */
 class AudioBible {
 
     /** @var string */
@@ -22,10 +26,10 @@ class AudioBible {
         ?string $script,
         ?string $scriptDirection
     ) {
-        $this->id = $id;
-        $this->name = $name;
-        $this->nameLocal = $nameLocal;
-        $this->description = $script;
+        $this->id               = $id;
+        $this->name             = $name;
+        $this->nameLocal        = $nameLocal;
+        $this->description      = $script;
         $this->descriptionLocal = $scriptDirection;
     }
 
