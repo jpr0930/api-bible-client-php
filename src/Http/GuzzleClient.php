@@ -4,36 +4,35 @@
 namespace ApiBibleClient\Http;
 
 use ApiBibleClient\Exception\HttpException;
-use GuzzleHttp\ClientInterface;
+use GuzzleHttp\ClientInterface as GuzzleClientInterface;
 use GuzzleHttp\Exception\RequestException;
 
-final class GuzzleClient implements Client {
+final class GuzzleClient extends ClientBase implements ClientInterface {
 
     /**
-     * @var ClientInterface
+     * @var GuzzleClientInterface
      */
     private $client;
 
-    public function __construct(ClientInterface $client) {
+    public function __construct(string $api_key, GuzzleClientInterface $client) {
+        parent::__construct($api_key);
         $this->client = $client;
     }
 
     public function request(
-        string $method,
         string $url,
-        string $api_key,
         array $params = [],
         array $data = []
     ): Response {
         $options = [
             'headers' => [
                 'Accept'  => 'application/json',
-                'api-key' => $api_key,
+                'api-key' => $this->api_key,
             ]
         ];
 
         try {
-            $response = $this->client->request($method, $url, $options);
+            $response = $this->client->request('GET', $url, $options);
         } catch (RequestException $exception) {
             throw new HttpException("Unable to complete request", 0, $exception);
         }

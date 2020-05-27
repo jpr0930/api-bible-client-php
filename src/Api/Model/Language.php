@@ -1,6 +1,6 @@
 <?php
 
-namespace ApiBibleClient\Api;
+namespace ApiBibleClient\Api\Model;
 
 class Language {
 
@@ -29,13 +29,13 @@ class Language {
         $this->scriptDirection = $scriptDirection;
     }
 
-    public static function createFromArray(array $language_data): self {
+    public static function createFromArray(array $languageData): self {
         return new static(
-            $language_data['id'],
-            $language_data['name'],
-            $language_data['nameLocal'],
-            $language_data['script'],
-            $language_data['scriptDirection'],
+            $languageData['id'],
+            $languageData['name'],
+            $languageData['nameLocal'],
+            $languageData['script'],
+            $languageData['scriptDirection'],
         );
     }
 

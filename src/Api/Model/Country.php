@@ -1,6 +1,6 @@
 <?php
 
-namespace ApiBibleClient\Api;
+namespace ApiBibleClient\Api\Model;
 
 class Country {
 
@@ -19,6 +19,14 @@ class Country {
         $this->id = $id;
         $this->name = $name;
         $this->nameLocal = $nameLocal;
+    }
+
+    public static function createFromArray(array $countryData): self {
+        return new static(
+            $countryData['id'],
+            $countryData['name'],
+            $countryData['nameLocal'],
+        );
     }
 
     /**

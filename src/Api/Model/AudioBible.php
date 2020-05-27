@@ -1,6 +1,6 @@
 <?php
 
-namespace ApiBibleClient\Api;
+namespace ApiBibleClient\Api\Model;
 
 class AudioBible {
 
@@ -19,14 +19,24 @@ class AudioBible {
         string $id,
         string $name,
         string $nameLocal,
-        string $script,
-        string $scriptDirection
+        ?string $script,
+        ?string $scriptDirection
     ) {
         $this->id = $id;
         $this->name = $name;
         $this->nameLocal = $nameLocal;
         $this->description = $script;
         $this->descriptionLocal = $scriptDirection;
+    }
+
+    public static function createFromArray(array $audioBibleData): self {
+        return new static(
+            $audioBibleData['id'],
+            $audioBibleData['name'],
+            $audioBibleData['nameLocal'],
+            $audioBibleData['script'],
+            $audioBibleData['scriptDirection'],
+        );
     }
 
     /**
