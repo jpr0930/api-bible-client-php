@@ -1,7 +1,8 @@
 <?php
 
-namespace ApiBibleClient\Api\Collection;
+namespace ApiBibleClient\Unit\Api\Collection;
 
+use ApiBibleClient\Api\Collection\BibleCollection;
 use PHPUnit\Framework\TestCase;
 
 class BibleCollectionTest extends TestCase {

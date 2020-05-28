@@ -4,7 +4,6 @@
 namespace ApiBibleClient\Http;
 
 use ApiBibleClient\Exception\HttpException;
-use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface as GuzzleClientInterface;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Exception\RequestException;
@@ -33,7 +32,6 @@ final class GuzzleClient extends ClientBase implements ClientInterface {
     /**
      * @param string $url
      * @param array  $params
-     * @param array  $data
      * @return Response
      * @throws HttpException
      * @throws RequestException|GuzzleException
@@ -44,7 +42,7 @@ final class GuzzleClient extends ClientBase implements ClientInterface {
                 'Accept'  => 'application/json',
                 'api-key' => $this->api_key,
             ],
-            'query' => $params
+            'query'   => $params
         ];
 
         try {

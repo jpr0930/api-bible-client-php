@@ -17,6 +17,12 @@ class ResourceFactory {
     /** @var RestClient */
     private $client;
 
+    /** @var string[] */
+    private static $classMap = [
+        'bible'  => BibleResource::class,
+        'bibles' => BiblesResource::class,
+    ];
+
     /**
      * ResourceFactory constructor.
      * @param RestClient $client
@@ -24,12 +30,6 @@ class ResourceFactory {
     public function __construct(RestClient $client) {
         $this->client = $client;
     }
-
-    /** @var string[] */
-    private static $classMap = [
-        'bible'  => BibleResource::class,
-        'bibles' => BiblesResource::class,
-    ];
 
     /**
      * Fetch resource class if defined in class map; instantiate if not done yet

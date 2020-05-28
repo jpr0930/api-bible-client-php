@@ -1,7 +1,8 @@
 <?php
 
-namespace ApiBibleClient\Api\Model;
+namespace ApiBibleClient\Unit\Api\Model;
 
+use ApiBibleClient\Api\Model\Language;
 use PHPUnit\Framework\TestCase;
 
 class LanguageTest extends TestCase {

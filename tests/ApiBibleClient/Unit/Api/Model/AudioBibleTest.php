@@ -1,7 +1,8 @@
 <?php
 
-namespace ApiBibleClient\Api\Model;
+namespace ApiBibleClient\Unit\Api\Model;
 
+use ApiBibleClient\Api\Model\AudioBible;
 use PHPUnit\Framework\TestCase;
 
 class AudioBibleTest extends TestCase {

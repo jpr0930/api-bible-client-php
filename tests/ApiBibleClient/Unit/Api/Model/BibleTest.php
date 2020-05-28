@@ -1,9 +1,11 @@
 <?php
 
-namespace ApiBibleClient\Api\Model;
+namespace ApiBibleClient\Unit\Api\Model;
 
 use ApiBibleClient\Api\Collection\AudioBibleCollection;
 use ApiBibleClient\Api\Collection\CountryCollection;
+use ApiBibleClient\Api\Model\Bible;
+use ApiBibleClient\Api\Model\Language;
 use PHPUnit\Framework\TestCase;
 
 class BibleTest extends TestCase {

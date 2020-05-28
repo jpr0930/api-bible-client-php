@@ -1,7 +1,8 @@
 <?php
 
-namespace ApiBibleClient\Api\Model;
+namespace ApiBibleClient\Unit\Api\Model;
 
+use ApiBibleClient\Api\Model\Country;
 use PHPUnit\Framework\TestCase;
 
 class CountryTest extends TestCase {

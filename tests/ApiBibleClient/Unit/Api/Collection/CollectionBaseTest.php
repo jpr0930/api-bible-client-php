@@ -1,13 +1,14 @@
 <?php
 
-namespace ApiBibleClient\Api\Collection;
+namespace ApiBibleClient\Unit\Api\Collection;
 
+use ApiBibleClient\Api\Collection\CollectionBase;
 use PHPUnit\Framework\TestCase;
 
 class CollectionBaseTest extends TestCase {
 
     public function testBasicFunctionality() {
-        $collection = new CollectionBase('\stdClass', [ new \stdClass() ]);
+        $collection = new CollectionBase('\stdClass', [new \stdClass()]);
 
         $collection[] = new \stdClass();
 
@@ -23,6 +24,6 @@ class CollectionBaseTest extends TestCase {
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage('Only objects of type \'\DateTime\' are accepted');
 
-        $collection = new CollectionBase('\DateTime', [ new \stdClass() ]);
+        $collection = new CollectionBase('\DateTime', [new \stdClass()]);
     }
 }

@@ -1,8 +1,10 @@
 <?php
 
-namespace ApiBibleClient\Api\Resource;
+namespace ApiBibleClient\Unit\Api\Resource;
 
 use ApiBibleClient\Api\Model\Bible;
+use ApiBibleClient\Api\Resource\BibleResource;
+use ApiBibleClient\Api\RestClient;
 use ApiBibleClient\Http\ClientInterface;
 use ApiBibleClient\Http\Response;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -15,7 +17,7 @@ class BibleResourceTest extends TestCase {
     private $client;
 
     public function setUp(): void {
-        $this->client = $this->createMock(ClientInterface::class);
+        $this->client = $this->createMock(RestClient::class);
 
         $this->bibleResource = new BibleResource($this->client);
     }

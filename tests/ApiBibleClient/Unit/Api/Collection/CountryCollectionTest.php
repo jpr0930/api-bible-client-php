@@ -1,7 +1,8 @@
 <?php
 
-namespace ApiBibleClient\Api\Collection;
+namespace ApiBibleClient\Unit\Api\Collection;
 
+use ApiBibleClient\Api\Collection\CountryCollection;
 use PHPUnit\Framework\TestCase;
 
 class CountryCollectionTest extends TestCase {
