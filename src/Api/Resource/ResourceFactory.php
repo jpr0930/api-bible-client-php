@@ -3,6 +3,7 @@
 namespace ApiBibleClient\Api\Resource;
 
 use ApiBibleClient\Api\RestClient;
+use InvalidArgumentException;
 
 /**
  * Class ResourceFactory
@@ -12,11 +13,6 @@ use ApiBibleClient\Api\RestClient;
  * @package ApiBibleClient\Api\Resource
  */
 class ResourceFactory {
-    /** @var array */
-    private $services = [];
-    /** @var RestClient */
-    private $client;
-
     /** @var string[] */
     private static $classMap = [
         'audioBible'  => AudioBibleResource::class,
@@ -24,6 +20,10 @@ class ResourceFactory {
         'bible'       => BibleResource::class,
         'bibles'      => BiblesResource::class,
     ];
+    /** @var array */
+    private $services = [];
+    /** @var RestClient */
+    private $client;
 
     /**
      * ResourceFactory constructor.
@@ -38,7 +38,7 @@ class ResourceFactory {
      *
      * @param string $name
      * @return mixed
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      */
     public function getResourceClass(string $name) {
         $resourceClass = self::$classMap[$name] ?? null;
@@ -51,7 +51,7 @@ class ResourceFactory {
             return $this->services[$name];
         }
 
-        throw new \InvalidArgumentException('Undefined resource: ' . $name);
+        throw new InvalidArgumentException('Undefined resource: ' . $name);
     }
 
 }

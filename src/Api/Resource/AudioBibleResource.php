@@ -2,7 +2,6 @@
 
 namespace ApiBibleClient\Api\Resource;
 
-use ApiBibleClient\Api\Collection\BibleCollection;
 use ApiBibleClient\Api\Model\AudioBible;
 
 /**

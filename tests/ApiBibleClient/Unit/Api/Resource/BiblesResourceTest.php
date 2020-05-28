@@ -5,7 +5,6 @@ namespace ApiBibleClient\Unit\Api\Resource;
 use ApiBibleClient\Api\Collection\BibleCollection;
 use ApiBibleClient\Api\Resource\BiblesResource;
 use ApiBibleClient\Api\RestClient;
-use ApiBibleClient\Http\ClientInterface;
 use ApiBibleClient\Http\Response;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -29,9 +28,9 @@ class BiblesResourceTest extends TestCase {
         );
 
         $this->client->expects($this->once())
-            ->method('request')
-            ->with('https://api.scripture.api.bible/v1/bibles')
-            ->willReturn($response);
+                     ->method('request')
+                     ->with('https://api.scripture.api.bible/v1/bibles')
+                     ->willReturn($response);
 
         $this->assertInstanceOf(BibleCollection::class, $this->bibleResource->get());
     }

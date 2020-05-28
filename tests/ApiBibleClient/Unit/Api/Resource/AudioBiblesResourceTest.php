@@ -4,9 +4,7 @@ namespace ApiBibleClient\Unit\Api\Resource;
 
 use ApiBibleClient\Api\Collection\BibleCollection;
 use ApiBibleClient\Api\Resource\AudioBiblesResource;
-use ApiBibleClient\Api\Resource\BiblesResource;
 use ApiBibleClient\Api\RestClient;
-use ApiBibleClient\Http\ClientInterface;
 use ApiBibleClient\Http\Response;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -30,9 +28,9 @@ class AudioBiblesResourceTest extends TestCase {
         );
 
         $this->client->expects($this->once())
-            ->method('request')
-            ->with('https://api.scripture.api.bible/v1/audio-bibles')
-            ->willReturn($response);
+                     ->method('request')
+                     ->with('https://api.scripture.api.bible/v1/audio-bibles')
+                     ->willReturn($response);
 
         $this->assertInstanceOf(BibleCollection::class, $this->audioBiblesResource->get());
     }
