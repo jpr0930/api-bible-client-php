@@ -10,8 +10,7 @@ interface ClientInterface {
     /**
      * @param string $url
      * @param array  $params
-     * @param array  $data
      * @return Response
      */
-    public function request(string $url, array $params = [], array $data = []): Response;
+    public function request(string $url, array $params = []): Response;
 }

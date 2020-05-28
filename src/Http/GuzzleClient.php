@@ -4,6 +4,7 @@
 namespace ApiBibleClient\Http;
 
 use ApiBibleClient\Exception\HttpException;
+use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface as GuzzleClientInterface;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Exception\RequestException;
@@ -35,24 +36,21 @@ final class GuzzleClient extends ClientBase implements ClientInterface {
      * @param array  $data
      * @return Response
      * @throws HttpException
-     * @throws GuzzleException
+     * @throws RequestException|GuzzleException
      */
-    public function request(
-        string $url,
-        array $params = [],
-        array $data = []
-    ): Response {
+    public function request(string $url, array $params = []): Response {
         $options = [
             'headers' => [
                 'Accept'  => 'application/json',
                 'api-key' => $this->api_key,
-            ]
+            ],
+            'query' => $params
         ];
 
         try {
             $response = $this->client->request('GET', $url, $options);
         } catch (RequestException $exception) {
-            throw new HttpException("Unable to complete request", 0, $exception);
+            throw new HttpException("Unable to complete request: " . $exception->getMessage(), 0, $exception);
         }
 
         return new Response($response->getStatusCode(), $response->getBody(), $response->getHeaders());

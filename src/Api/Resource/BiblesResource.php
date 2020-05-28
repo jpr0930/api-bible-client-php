@@ -17,8 +17,8 @@ class BiblesResource extends ResourceBase {
     /**
      * @return BibleCollection
      */
-    public function get() {
-        $content = $this->client->request(self::BASE_URI . self::URI)->getContent();
+    public function get(array $params = []) {
+        $content = $this->client->request(self::BASE_URI . self::URI, $params)->getContent();
 
         return BibleCollection::createFromArray($content['data']);
     }

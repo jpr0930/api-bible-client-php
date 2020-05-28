@@ -2,6 +2,7 @@
 
 namespace ApiBibleClient\Api\Resource;
 
+use ApiBibleClient\Api\RestClient;
 use ApiBibleClient\Http\ClientInterface;
 
 /**
@@ -19,9 +20,9 @@ abstract class ResourceBase {
 
     /**
      * ResourceBase constructor.
-     * @param ClientInterface $client
+     * @param RestClient $client
      */
-    public function __construct(ClientInterface $client) {
+    public function __construct(RestClient $client) {
         $this->client = $client;
     }
 
