@@ -6,6 +6,9 @@ use ApiBibleClient\Api\RestClient;
 
 /**
  * Class ResourceFactory
+ *
+ * Factory implementation to load API resource classes at runtime
+ *
  * @package ApiBibleClient\Api\Resource
  */
 class ResourceFactory {
@@ -29,8 +32,11 @@ class ResourceFactory {
     ];
 
     /**
+     * Fetch resource class if defined in class map; instantiate if not done yet
+     *
      * @param string $name
      * @return mixed
+     * @throws \InvalidArgumentException
      */
     public function getResourceClass(string $name) {
         $resourceClass = self::$classMap[$name] ?? null;
@@ -39,8 +45,6 @@ class ResourceFactory {
             if (array_key_exists($name, $this->services) === false) {
                 $this->services[$name] = new $resourceClass($this->client);
             }
-
-            var_dump($resourceClass);
 
             return $this->services[$name];
         }

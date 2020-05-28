@@ -12,6 +12,8 @@ use ApiBibleClient\Http\Response;
  * Class RestClient
  * @package ApiBibleClient\Api
  *
+ * Rest client for use in Resource classes
+ *
  * @property BibleResource  $bible
  * @property BiblesResource $bibles
  */
@@ -32,6 +34,8 @@ class RestClient {
     }
 
     /**
+     * Magic method implementation for lazy loading of API resource classes
+     *
      * @param $name
      * @return mixed
      */
@@ -44,6 +48,8 @@ class RestClient {
     }
 
     /**
+     * Wrapper to expose internal HTTP client request method
+     *
      * @param string $url
      * @param array  $params
      * @return Response
