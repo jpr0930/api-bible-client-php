@@ -19,8 +19,10 @@ class ResourceFactory {
 
     /** @var string[] */
     private static $classMap = [
-        'bible'  => BibleResource::class,
-        'bibles' => BiblesResource::class,
+        'audioBible'  => AudioBibleResource::class,
+        'audioBibles' => AudioBiblesResource::class,
+        'bible'       => BibleResource::class,
+        'bibles'      => BiblesResource::class,
     ];
 
     /**

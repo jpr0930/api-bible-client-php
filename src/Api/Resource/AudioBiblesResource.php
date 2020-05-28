@@ -5,14 +5,14 @@ namespace ApiBibleClient\Api\Resource;
 use ApiBibleClient\Api\Collection\BibleCollection;
 
 /**
- * Class BiblesResource
+ * Class AudioBiblesResource
  * @package ApiBibleClient\Api\Resource
  */
-class BiblesResource extends ResourceBase {
+class AudioBiblesResource extends ResourceBase {
     /**
      *
      */
-    public const URI = '/bibles';
+    public const URI = '/audio-bibles';
 
 
     /**

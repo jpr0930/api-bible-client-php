@@ -119,7 +119,7 @@ class Bible {
             $bibleData['type'],
             $bibleData['updatedAt'],
             $bibleData['relatedDbl'],
-            AudioBibleCollection::createFromArray($bibleData['audioBibles']),
+            AudioBibleCollection::createFromArray($bibleData['audioBibles'] ?? []),
         );
     }
 
