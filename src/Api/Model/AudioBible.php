@@ -23,14 +23,14 @@ class AudioBible {
         string $id,
         string $name,
         string $nameLocal,
-        ?string $script,
-        ?string $scriptDirection
+        ?string $description,
+        ?string $descriptionLocal
     ) {
         $this->id               = $id;
         $this->name             = $name;
         $this->nameLocal        = $nameLocal;
-        $this->description      = $script;
-        $this->descriptionLocal = $scriptDirection;
+        $this->description      = $description;
+        $this->descriptionLocal = $descriptionLocal;
     }
 
     public static function createFromArray(array $audioBibleData): self {
@@ -38,8 +38,8 @@ class AudioBible {
             $audioBibleData['id'],
             $audioBibleData['name'],
             $audioBibleData['nameLocal'],
-            $audioBibleData['script'],
-            $audioBibleData['scriptDirection'],
+            $audioBibleData['description'],
+            $audioBibleData['descriptionLocal'],
         );
     }
 

@@ -18,7 +18,7 @@ class BibleResource extends ResourceBase {
      * @param string $id
      * @return Bible
      */
-    public function get(string $id) {
+    public function get(string $id): Bible {
         $content = $this->client->request(self::BASE_URI . sprintf(self::URI, $id))->getContent();
 
         return Bible::createFromArray($content['data']);

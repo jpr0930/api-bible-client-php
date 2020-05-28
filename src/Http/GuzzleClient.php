@@ -44,7 +44,7 @@ final class GuzzleClient extends ClientBase implements ClientInterface {
     ): Response {
         $options = [
             'headers' => [
-                'Accept' => 'application/json',
+                'Accept'  => 'application/json',
                 'api-key' => $this->api_key,
             ]
         ];

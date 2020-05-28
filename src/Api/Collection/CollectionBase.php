@@ -14,7 +14,7 @@ use OutOfBoundsException;
  * Class CollectionBase
  * @package ApiBibleClient\Api\Collection
  */
-abstract class CollectionBase implements ArrayAccess, Countable, IteratorAggregate, JsonSerializable {
+class CollectionBase implements ArrayAccess, Countable, IteratorAggregate, JsonSerializable {
     /** @var array */
     protected $elements = [];
     /** @var string */
