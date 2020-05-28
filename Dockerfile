@@ -1,10 +1,19 @@
 FROM php:7.4-cli
-COPY . /usr/src/api-bible
-WORKDIR /usr/src/api-bible
-# install git
-RUN apt-get update \
-    && apt-get upgrade \
-    && apt-get install git -y
-RUN curl -sS https://getcomposer.org/installer | php \
-        && mv composer.phar /usr/local/bin/ \
-        && ln -s /usr/local/bin/composer.phar /usr/local/bin/composer
+
+RUN mkdir /api-bible
+WORKDIR /api-bible
+
+COPY . .
+
+RUN curl --silent --show-error https://getcomposer.org/installer | php
+RUN mv composer.phar /usr/local/bin/composer
+
+RUN  apt-get update -y && \
+     apt-get upgrade -y && \
+     apt-get dist-upgrade -y && \
+     apt-get -y autoremove && \
+     apt-get clean
+
+RUN apt-get install -y zip unzip git
+
+RUN composer install
