@@ -2,20 +2,19 @@
 
 namespace ApiBibleClient\Unit\Api\Collection;
 
-use ApiBibleClient\Api\Collection\BibleCollection;
+use ApiBibleClient\Api\Collection\BibleSummaryCollection;
 use PHPUnit\Framework\TestCase;
 
-class BibleCollectionTest extends TestCase {
+class BibleSummaryCollectionTest extends TestCase {
 
     public function testCreateFromArray() {
-        $collection = BibleCollection::createFromArray(
+        $collection = BibleSummaryCollection::createFromArray(
             [
                 [
                     'id'                => '24b434',
                     'dblId'             => 'dbl24b434',
                     'abbreviation'      => 'abbr',
                     'abbreviationLocal' => 'abbr_local',
-                    'copyright'         => null,
                     'language'          => [
                         'id'              => '22',
                         'name'            => 'English',
@@ -26,18 +25,17 @@ class BibleCollectionTest extends TestCase {
                     'countries'         => [],
                     'name'              => 'ESV',
                     'nameLocal'         => 'ESV_local',
-                    'script'            => 'Latin',
-                    'scriptDirection'   => 'LTR',
-                    'info'              => 'ESV translation',
+                    'description'       => 'Latin',
+                    'descriptionLocal'  => 'LTR',
+                    'relatedDbl'        => 'dbl',
                     'type'              => 'text',
                     'updatedAt'         => '2020-02-25T01:39:58.000Z',
-                    'relatedDbl'        => null,
                     'audioBibles'       => [],
                 ]
             ]
         );
 
-        $this->assertInstanceOf(BibleCollection::class, $collection);
+        $this->assertInstanceOf(BibleSummaryCollection::class, $collection);
         $this->assertCount(1, $collection);
     }
 }

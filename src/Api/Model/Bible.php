@@ -9,39 +9,11 @@ use ApiBibleClient\Api\Collection\CountryCollection;
  * Class Bible
  * @package ApiBibleClient\Api\Model
  */
-class Bible {
-    /** @var string */
-    private $id;
-    /** @var string */
-    private $dblId;
-    /** @var string */
-    private $abbreviation;
-    /** @var string */
-    private $abbreviationLocal;
+final class Bible extends BibleSummary {
     /** @var string|null */
     private $copyright;
-    /** @var Language */
-    private $language;
-    /** @var CountryCollection */
-    private $countries;
-    /** @var string */
-    private $name;
-    /** @var string */
-    private $nameLocal;
-    /** @var string|null */
-    private $script;
-    /** @var string|null */
-    private $scriptDirection;
     /** @var string|null */
     private $info;
-    /** @var string */
-    private $type;
-    /** @var string */
-    private $updatedAt;
-    /** @var string|null */
-    private $relatedDbl;
-    /** @var AudioBibleCollection */
-    private $audioBibles;
 
     /**
      * Bible constructor.
@@ -49,17 +21,17 @@ class Bible {
      * @param string               $dblId
      * @param string               $abbreviation
      * @param string               $abbreviationLocal
-     * @param string|null          $copyright
+     * @param string               $copyright
      * @param Language             $language
      * @param CountryCollection    $countries
      * @param string               $name
      * @param string               $nameLocal
-     * @param string|null          $script
-     * @param string|null          $scriptDirection
+     * @param string|null          $description
+     * @param string|null          $descriptionLocal
      * @param string|null          $info
+     * @param string|null          $relatedDbl
      * @param string               $type
      * @param string               $updatedAt
-     * @param string|null          $relatedDbl
      * @param AudioBibleCollection $audioBibles
      */
     public function __construct(
@@ -67,35 +39,37 @@ class Bible {
         string $dblId,
         string $abbreviation,
         string $abbreviationLocal,
-        ?string $copyright,
+        string $copyright,
         Language $language,
         CountryCollection $countries,
         string $name,
         string $nameLocal,
-        ?string $script,
-        ?string $scriptDirection,
+        ?string $description,
+        ?string $descriptionLocal,
         ?string $info,
+        ?string $relatedDbl,
         string $type,
         string $updatedAt,
-        ?string $relatedDbl,
         AudioBibleCollection $audioBibles
     ) {
-        $this->id                = $id;
-        $this->dblId             = $dblId;
-        $this->abbreviation      = $abbreviation;
-        $this->abbreviationLocal = $abbreviationLocal;
-        $this->copyright         = $copyright;
-        $this->language          = $language;
-        $this->countries         = $countries;
-        $this->name              = $name;
-        $this->nameLocal         = $nameLocal;
-        $this->script            = $script;
-        $this->scriptDirection   = $scriptDirection;
-        $this->info              = $info;
-        $this->type              = $type;
-        $this->updatedAt         = $updatedAt;
-        $this->relatedDbl        = $relatedDbl;
-        $this->audioBibles       = $audioBibles;
+        parent::__construct(
+            $id,
+            $dblId,
+            $abbreviation,
+            $abbreviationLocal,
+            $language,
+            $countries,
+            $name,
+            $nameLocal,
+            $description,
+            $descriptionLocal,
+            $relatedDbl,
+            $type,
+            $updatedAt,
+            $audioBibles
+        );
+        $this->copyright = $copyright;
+        $this->info      = $info;
     }
 
     /**
@@ -113,12 +87,12 @@ class Bible {
             CountryCollection::createFromArray($bibleData['countries']),
             $bibleData['name'],
             $bibleData['nameLocal'],
-            $bibleData['script'],
-            $bibleData['scriptDirection'],
+            $bibleData['description'],
+            $bibleData['descriptionLocal'],
             $bibleData['info'],
+            $bibleData['relatedDbl'],
             $bibleData['type'],
             $bibleData['updatedAt'],
-            $bibleData['relatedDbl'],
             AudioBibleCollection::createFromArray($bibleData['audioBibles'] ?? []),
         );
     }
@@ -126,78 +100,8 @@ class Bible {
     /**
      * @return string
      */
-    public function getId(): string {
-        return $this->id;
-    }
-
-    /**
-     * @return string
-     */
-    public function getDblId(): string {
-        return $this->dblId;
-    }
-
-    /**
-     * @return string
-     */
-    public function getAbbreviation(): string {
-        return $this->abbreviation;
-    }
-
-    /**
-     * @return string
-     */
-    public function getAbbreviationLocal(): string {
-        return $this->abbreviationLocal;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getCopyright(): ?string {
+    public function getCopyright(): string {
         return $this->copyright;
-    }
-
-    /**
-     * @return Language
-     */
-    public function getLanguage(): Language {
-        return $this->language;
-    }
-
-    /**
-     * @return CountryCollection
-     */
-    public function getCountries(): CountryCollection {
-        return $this->countries;
-    }
-
-    /**
-     * @return string
-     */
-    public function getName(): string {
-        return $this->name;
-    }
-
-    /**
-     * @return string
-     */
-    public function getNameLocal(): string {
-        return $this->nameLocal;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getScript(): ?string {
-        return $this->script;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getScriptDirection(): ?string {
-        return $this->scriptDirection;
     }
 
     /**
@@ -207,32 +111,5 @@ class Bible {
         return $this->info;
     }
 
-    /**
-     * @return string
-     */
-    public function getType(): string {
-        return $this->type;
-    }
-
-    /**
-     * @return string
-     */
-    public function getUpdatedAt(): string {
-        return $this->updatedAt;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getRelatedDbl(): ?string {
-        return $this->relatedDbl;
-    }
-
-    /**
-     * @return AudioBibleCollection
-     */
-    public function getAudioBibles(): AudioBibleCollection {
-        return $this->audioBibles;
-    }
 
 }

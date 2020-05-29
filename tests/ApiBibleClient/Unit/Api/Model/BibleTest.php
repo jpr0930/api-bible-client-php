@@ -17,7 +17,7 @@ class BibleTest extends TestCase {
                 'dblId'             => 'dbl24b434',
                 'abbreviation'      => 'abbr',
                 'abbreviationLocal' => 'abbr_local',
-                'copyright'         => null,
+                'copyright'         => 'copy is right',
                 'language'          => [
                     'id'              => '22',
                     'name'            => 'English',
@@ -28,12 +28,12 @@ class BibleTest extends TestCase {
                 'countries'         => [],
                 'name'              => 'ESV',
                 'nameLocal'         => 'ESV_local',
-                'script'            => 'Latin',
-                'scriptDirection'   => 'LTR',
+                'description'       => 'Latin',
+                'descriptionLocal'  => 'LTR',
                 'info'              => 'ESV translation',
+                'relatedDbl'        => 'dbl',
                 'type'              => 'text',
                 'updatedAt'         => '2020-02-25T01:39:58.000Z',
-                'relatedDbl'        => null,
                 'audioBibles'       => [],
             ]
         );
@@ -43,16 +43,16 @@ class BibleTest extends TestCase {
         $this->assertEquals('dbl24b434', $bible->getDblId());
         $this->assertEquals('abbr', $bible->getAbbreviation());
         $this->assertEquals('abbr_local', $bible->getAbbreviationLocal());
-        $this->assertNull($bible->getCopyright());
+        $this->assertEquals('copy is right', $bible->getCopyright());
         $this->assertInstanceOf(Language::class, $bible->getLanguage());
         $this->assertInstanceOf(CountryCollection::class, $bible->getCountries());
         $this->assertEquals('ESV', $bible->getName());
         $this->assertEquals('ESV_local', $bible->getNameLocal());
-        $this->assertEquals('Latin', $bible->getScript());
-        $this->assertEquals('LTR', $bible->getScriptDirection());
+        $this->assertEquals('Latin', $bible->getDescription());
+        $this->assertEquals('LTR', $bible->getDescriptionLocal());
         $this->assertEquals('ESV translation', $bible->getInfo());
         $this->assertEquals('2020-02-25T01:39:58.000Z', $bible->getUpdatedAt());
-        $this->assertNull($bible->getRelatedDbl());
+        $this->assertEquals('dbl', $bible->getRelatedDbl());
         $this->assertInstanceOf(AudioBibleCollection::class, $bible->getAudioBibles());
     }
 

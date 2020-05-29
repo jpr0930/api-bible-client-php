@@ -15,10 +15,10 @@ use InvalidArgumentException;
 class ResourceFactory {
     /** @var string[] */
     private static $classMap = [
-        'audioBible'  => AudioBibleResource::class,
-        'audioBibles' => AudioBiblesResource::class,
-        'bible'       => BibleResource::class,
-        'bibles'      => BiblesResource::class,
+        'audioBibles' => AudioBibles::class,
+        'bibles'      => Bibles::class,
+        'books'       => Books::class,
+        'chapters'    => Chapters::class,
     ];
     /** @var array */
     private $services = [];

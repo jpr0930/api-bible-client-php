@@ -2,10 +2,10 @@
 
 namespace ApiBibleClient\Api;
 
-use ApiBibleClient\Api\Resource\AudioBibleResource;
-use ApiBibleClient\Api\Resource\AudioBiblesResource;
-use ApiBibleClient\Api\Resource\BibleResource;
-use ApiBibleClient\Api\Resource\BiblesResource;
+use ApiBibleClient\Api\Resource\AudioBibles;
+use ApiBibleClient\Api\Resource\Bibles;
+use ApiBibleClient\Api\Resource\Books;
+use ApiBibleClient\Api\Resource\Chapters;
 use ApiBibleClient\Api\Resource\ResourceFactory;
 use ApiBibleClient\Http\ClientInterface;
 use ApiBibleClient\Http\Response;
@@ -16,10 +16,10 @@ use ApiBibleClient\Http\Response;
  *
  * Rest client for use in Resource classes
  *
- * @property AudioBibleResource  $audioBible
- * @property AudioBiblesResource $audioBibles
- * @property BibleResource       $bible
- * @property BiblesResource      $bibles
+ * @property AudioBibles $audioBibles
+ * @property Bibles      $bibles
+ * @property Books       $books
+ * @property Chapters    $chapters
  */
 class RestClient {
 

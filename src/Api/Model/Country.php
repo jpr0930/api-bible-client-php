@@ -6,7 +6,7 @@ namespace ApiBibleClient\Api\Model;
  * Class Country
  * @package ApiBibleClient\Api\Model
  */
-class Country {
+final class Country {
 
     /** @var string */
     private $id;
@@ -15,6 +15,12 @@ class Country {
     /** @var string */
     private $nameLocal;
 
+    /**
+     * Country constructor.
+     * @param string $id
+     * @param string $name
+     * @param string $nameLocal
+     */
     public function __construct(
         string $id,
         string $name,
@@ -25,6 +31,10 @@ class Country {
         $this->nameLocal = $nameLocal;
     }
 
+    /**
+     * @param array $countryData
+     * @return static
+     */
     public static function createFromArray(array $countryData): self {
         return new static(
             $countryData['id'],

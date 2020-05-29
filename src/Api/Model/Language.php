@@ -6,7 +6,7 @@ namespace ApiBibleClient\Api\Model;
  * Class Language
  * @package ApiBibleClient\Api\Model
  */
-class Language {
+final class Language {
 
     /** @var string */
     private $id;
@@ -19,6 +19,14 @@ class Language {
     /** @var string */
     private $scriptDirection;
 
+    /**
+     * Language constructor.
+     * @param string $id
+     * @param string $name
+     * @param string $nameLocal
+     * @param string $script
+     * @param string $scriptDirection
+     */
     public function __construct(
         string $id,
         string $name,
@@ -33,6 +41,10 @@ class Language {
         $this->scriptDirection = $scriptDirection;
     }
 
+    /**
+     * @param array $languageData
+     * @return static
+     */
     public static function createFromArray(array $languageData): self {
         return new static(
             $languageData['id'],

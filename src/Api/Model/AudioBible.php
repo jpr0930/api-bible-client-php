@@ -6,7 +6,7 @@ namespace ApiBibleClient\Api\Model;
  * Class AudioBible
  * @package ApiBibleClient\Api\Model
  */
-class AudioBible {
+final class AudioBible {
 
     /** @var string */
     private $id;
@@ -19,6 +19,14 @@ class AudioBible {
     /** @var string */
     private $descriptionLocal;
 
+    /**
+     * AudioBible constructor.
+     * @param string      $id
+     * @param string      $name
+     * @param string      $nameLocal
+     * @param string|null $description
+     * @param string|null $descriptionLocal
+     */
     public function __construct(
         string $id,
         string $name,
@@ -33,6 +41,10 @@ class AudioBible {
         $this->descriptionLocal = $descriptionLocal;
     }
 
+    /**
+     * @param array $audioBibleData
+     * @return static
+     */
     public static function createFromArray(array $audioBibleData): self {
         return new static(
             $audioBibleData['id'],
