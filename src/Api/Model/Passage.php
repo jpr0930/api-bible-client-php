@@ -61,4 +61,46 @@ final class Passage {
         );
     }
 
+    /**
+     * @return string
+     */
+    public function getId(): string {
+        return $this->id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getBibleId(): string {
+        return $this->bibleId;
+    }
+
+    /**
+     * @return string
+     */
+    public function getOrgId(): string {
+        return $this->orgId;
+    }
+
+    /**
+     * @return string
+     */
+    public function getContent(): string {
+        return $this->content;
+    }
+
+    /**
+     * @return string
+     */
+    public function getReference(): string {
+        return $this->reference;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCopyright(): string {
+        return $this->copyright;
+    }
+
 }
