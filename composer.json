@@ -13,7 +13,7 @@
     "psr-4": {"ApiBibleClient\\": "src/"}
   },
   "require": {
-    "php": "^7.4.*",
+    "php": "^7.4",
     "guzzlehttp/guzzle": "^6.5",
     "ext-json": "*"
   },
