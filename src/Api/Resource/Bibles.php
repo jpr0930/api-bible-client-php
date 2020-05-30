@@ -8,7 +8,6 @@ use ApiBibleClient\Api\Collection\ChapterSummaryCollection;
 use ApiBibleClient\Api\Model\Bible;
 use ApiBibleClient\Api\Model\Book;
 use ApiBibleClient\Api\Model\Chapter;
-use ApiBibleClient\Api\Model\ChapterSummary;
 
 /**
  * Class Bibles
@@ -95,10 +94,11 @@ class Bibles extends ResourceBase {
     /**
      * @param string $bibleId
      * @param string $chapterId
+     * @param array  $params
      * @return Chapter
      */
-    public function getChapter(string $bibleId, string $chapterId): Chapter {
-        $content = $this->client->request(self::BASE_URI . sprintf(self::URI_GET_CHAPTER, $bibleId, $chapterId))->getContent();
+    public function getChapter(string $bibleId, string $chapterId, array $params = []): Chapter {
+        $content = $this->client->request(self::BASE_URI . sprintf(self::URI_GET_CHAPTER, $bibleId, $chapterId), $params)->getContent();
 
         return Chapter::createFromArray($content['data']);
     }
