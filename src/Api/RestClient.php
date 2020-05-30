@@ -4,7 +4,6 @@ namespace ApiBibleClient\Api;
 
 use ApiBibleClient\Api\Resource\AudioBibles;
 use ApiBibleClient\Api\Resource\Bibles;
-use ApiBibleClient\Api\Resource\Books;
 use ApiBibleClient\Api\Resource\Chapters;
 use ApiBibleClient\Api\Resource\ResourceFactory;
 use ApiBibleClient\Http\ClientInterface;
@@ -18,7 +17,6 @@ use ApiBibleClient\Http\Response;
  *
  * @property AudioBibles $audioBibles
  * @property Bibles      $bibles
- * @property Books       $books
  * @property Chapters    $chapters
  */
 class RestClient {

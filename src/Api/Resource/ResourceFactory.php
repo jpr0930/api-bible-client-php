@@ -17,7 +17,6 @@ class ResourceFactory {
     private static $classMap = [
         'audioBibles' => AudioBibles::class,
         'bibles'      => Bibles::class,
-        'books'       => Books::class,
         'chapters'    => Chapters::class,
     ];
     /** @var array */
