@@ -18,9 +18,21 @@ class AudioBibles extends ResourceBase {
      *
      */
     public const URI = '/audio-bibles';
+    /**
+     *
+     */
     public const URI_ALL_BOOKS = '/audio-bibles/%s/books';
+    /**
+     *
+     */
     public const URI_GET_BOOK = '/audio-bibles/%s/books/%s';
+    /**
+     *
+     */
     public const URI_ALL_CHAPTERS = '/audio-bibles/%s/books/%s/chapters';
+    /**
+     *
+     */
     public const URI_GET_CHAPTER = '/audio-bibles/%s/chapters/%s';
 
     /**
@@ -65,6 +77,12 @@ class AudioBibles extends ResourceBase {
         return AudioBible::createFromArray($content['data']);
     }
 
+    /**
+     * @param string $bibleId
+     * @param string $bookId
+     * @param array  $params
+     * @return Book
+     */
     public function getBook(string $bibleId, string $bookId, array $params = []) {
         $content = $this->client
             ->request(self::BASE_URI . sprintf(self::URI_GET_BOOK, $bibleId, $bookId), $params)

@@ -13,12 +13,13 @@ use InvalidArgumentException;
  * @package ApiBibleClient\Api\Resource
  */
 class ResourceFactory {
+
     /** @var string[] */
     private static $classMap = [
         'audioBibles' => AudioBibles::class,
         'bibles'      => Bibles::class,
-        'chapters'    => Chapters::class,
     ];
+
     /** @var array */
     private $services = [];
     /** @var RestClient */

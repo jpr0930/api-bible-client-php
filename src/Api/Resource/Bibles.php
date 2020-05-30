@@ -18,9 +18,21 @@ class Bibles extends ResourceBase {
      *
      */
     public const URI = '/bibles';
+    /**
+     *
+     */
     public const URI_ALL_BOOKS = '/bibles/%s/books';
+    /**
+     *
+     */
     public const URI_GET_BOOK = '/bibles/%s/books/%s';
+    /**
+     *
+     */
     public const URI_ALL_CHAPTERS = '/bibles/%s/books/%s/chapters';
+    /**
+     *
+     */
     public const URI_GET_CHAPTER = '/bibles/%s/chapters/%s';
 
     /**
@@ -65,6 +77,12 @@ class Bibles extends ResourceBase {
         return Bible::createFromArray($content['data']);
     }
 
+    /**
+     * @param string $bibleId
+     * @param string $bookId
+     * @param array  $params
+     * @return Book
+     */
     public function getBook(string $bibleId, string $bookId, array $params = []) {
         $content = $this->client
             ->request(self::BASE_URI . sprintf(self::URI_GET_BOOK, $bibleId, $bookId), $params)
