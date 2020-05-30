@@ -3,13 +3,17 @@
 namespace ApiBibleClient\Api\Model;
 
 /**
- * Class Chapter
+ * Class AudioChapter
  * @package ApiBibleClient\Api\Model
  */
-final class Chapter extends ChapterSummary {
+final class AudioChapter extends ChapterSummary {
 
     /** @var string */
-    private $content;
+    private $resourceUrl;
+    /** @var array|null */
+    private $timecodes;
+    /** @var int */
+    private $expiresAt;
     /** @var array|null */
     private $next;
     /** @var array|null */
@@ -26,7 +30,9 @@ final class Chapter extends ChapterSummary {
      * @param string      $number
      * @param string      $bookId
      * @param string|null $reference
-     * @param string      $content
+     * @param string      $resourceUrl
+     * @param array|null  $timecodes
+     * @param int         $expiresAt
      * @param array|null  $next
      * @param array|null  $previous
      * @param string      $copyright
@@ -38,7 +44,9 @@ final class Chapter extends ChapterSummary {
         string $number,
         string $bookId,
         ?string $reference,
-        string $content,
+        string $resourceUrl,
+        ?array $timecodes,
+        int $expiresAt,
         ?array $next,
         ?array $previous,
         string $copyright,
@@ -52,11 +60,13 @@ final class Chapter extends ChapterSummary {
             $reference
         );
 
-        $this->content   = $content;
-        $this->next      = $next;
-        $this->previous  = $previous;
-        $this->copyright = $copyright;
-        $this->meta      = $meta;
+        $this->resourceUrl = $resourceUrl;
+        $this->timecodes   = $timecodes;
+        $this->expiresAt   = $expiresAt;
+        $this->next        = $next;
+        $this->previous    = $previous;
+        $this->copyright   = $copyright;
+        $this->meta        = $meta;
 
     }
 
@@ -71,7 +81,9 @@ final class Chapter extends ChapterSummary {
             $chapterData['number'],
             $chapterData['bookId'],
             $chapterData['reference'],
-            $chapterData['content'],
+            $chapterData['resourceUrl'],
+            $chapterData['timecodes'],
+            $chapterData['expiresAt'],
             $chapterData['next'],
             $chapterData['previous'],
             $chapterData['copyright'],
@@ -82,8 +94,22 @@ final class Chapter extends ChapterSummary {
     /**
      * @return string
      */
-    public function getContent(): string {
-        return $this->content;
+    public function getResourceUrl(): string {
+        return $this->resourceUrl;
+    }
+
+    /**
+     * @return array|null
+     */
+    public function getTimecodes(): ?array {
+        return $this->timecodes;
+    }
+
+    /**
+     * @return int
+     */
+    public function getExpiresAt(): int {
+        return $this->expiresAt;
     }
 
     /**

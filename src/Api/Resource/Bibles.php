@@ -7,6 +7,7 @@ use ApiBibleClient\Api\Collection\BookCollection;
 use ApiBibleClient\Api\Collection\ChapterSummaryCollection;
 use ApiBibleClient\Api\Model\Bible;
 use ApiBibleClient\Api\Model\Book;
+use ApiBibleClient\Api\Model\Chapter;
 use ApiBibleClient\Api\Model\ChapterSummary;
 
 /**
@@ -50,7 +51,7 @@ class Bibles extends ResourceBase {
      * @param array  $params
      * @return BookCollection
      */
-    public function allBooks(string $bibleId, array $params = []) {
+    public function allBooks(string $bibleId, array $params = []): BookCollection {
         $content = $this->client->request(self::BASE_URI . sprintf(self::URI_ALL_BOOKS, $bibleId), $params)->getContent();
 
         return BookCollection::createFromArray($content['data']);
@@ -61,7 +62,7 @@ class Bibles extends ResourceBase {
      * @param string $bookId
      * @return ChapterSummaryCollection
      */
-    public function allChapters(string $bibleId, string $bookId) {
+    public function allChapters(string $bibleId, string $bookId): ChapterSummaryCollection {
         $content = $this->client->request(self::BASE_URI . sprintf(self::URI_ALL_CHAPTERS, $bibleId, $bookId))->getContent();
 
         return ChapterSummaryCollection::createFromArray($content['data']);
@@ -71,7 +72,7 @@ class Bibles extends ResourceBase {
      * @param string $id
      * @return Bible
      */
-    public function get(string $id) {
+    public function get(string $id): Bible {
         $content = $this->client->request(self::BASE_URI . self::URI . "/{$id}")->getContent();
 
         return Bible::createFromArray($content['data']);
@@ -83,7 +84,7 @@ class Bibles extends ResourceBase {
      * @param array  $params
      * @return Book
      */
-    public function getBook(string $bibleId, string $bookId, array $params = []) {
+    public function getBook(string $bibleId, string $bookId, array $params = []): Book {
         $content = $this->client
             ->request(self::BASE_URI . sprintf(self::URI_GET_BOOK, $bibleId, $bookId), $params)
             ->getContent();
@@ -94,12 +95,12 @@ class Bibles extends ResourceBase {
     /**
      * @param string $bibleId
      * @param string $chapterId
-     * @return ChapterSummary
+     * @return Chapter
      */
-    public function getChapter(string $bibleId, string $chapterId) {
+    public function getChapter(string $bibleId, string $chapterId): Chapter {
         $content = $this->client->request(self::BASE_URI . sprintf(self::URI_GET_CHAPTER, $bibleId, $chapterId))->getContent();
 
-        return ChapterSummary::createFromArray($content['data']);
+        return Chapter::createFromArray($content['data']);
     }
 
 }
