@@ -8,6 +8,7 @@ use ApiBibleClient\Api\Collection\ChapterSummaryCollection;
 use ApiBibleClient\Api\Model\Bible;
 use ApiBibleClient\Api\Model\Book;
 use ApiBibleClient\Api\Model\Chapter;
+use ApiBibleClient\Api\Model\Passage;
 
 /**
  * Class Bibles
@@ -33,7 +34,10 @@ class Bibles extends ResourceBase {
     /**
      *
      */
-    public const URI_GET_CHAPTER = '/bibles/%s/chapters/%s';
+    public const URI_GET_CHAPTER = '/bibles/%s/chapters/%s';    /**
+     *
+     */
+    public const URI_GET_PASSAGE = '/bibles/%s/passages/%s';
 
     /**
      * @param array $params
@@ -101,6 +105,18 @@ class Bibles extends ResourceBase {
         $content = $this->client->request(self::BASE_URI . sprintf(self::URI_GET_CHAPTER, $bibleId, $chapterId), $params)->getContent();
 
         return Chapter::createFromArray($content['data']);
+    }
+
+    /**
+     * @param string $bibleId
+     * @param string $passageId
+     * @param array  $params
+     * @return Passage
+     */
+    public function getPassage(string $bibleId, string $passageId, array $params = []): Passage {
+        $content = $this->client->request(self::BASE_URI . sprintf(self::URI_GET_PASSAGE, $bibleId, $passageId), $params)->getContent();
+
+        return Passage::createFromArray($content['data']);
     }
 
 }
