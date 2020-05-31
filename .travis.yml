@@ -9,7 +9,7 @@ before_install:
 install:
   - composer install --no-interaction --prefer-source
 
-script: ./vendor/bin/phpunit  --coverage-clover build/logs/clover.xml tests
+script: ./vendor/bin/phpunit --whitelist src --coverage-clover build/logs/clover.xml tests
 
 after_success:
   - travis_retry php vendor/bin/php-coveralls
