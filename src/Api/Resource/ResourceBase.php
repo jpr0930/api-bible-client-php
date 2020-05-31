@@ -10,10 +10,8 @@ use ApiBibleClient\Http\ClientInterface;
  * @package ApiBibleClient\Api\Resource
  */
 abstract class ResourceBase {
-    /**
-     *
-     */
-    const BASE_URI = 'https://api.scripture.api.bible/v1';
+
+    public const BASE_URI = 'https://api.scripture.api.bible/v1';
 
     /** @var ClientInterface */
     protected $client;

@@ -5,39 +5,27 @@ namespace ApiBibleClient\Api\Resource;
 use ApiBibleClient\Api\Collection\BibleSummaryCollection;
 use ApiBibleClient\Api\Collection\BookCollection;
 use ApiBibleClient\Api\Collection\ChapterSummaryCollection;
+use ApiBibleClient\Api\Collection\VerseSummaryCollection;
 use ApiBibleClient\Api\Model\Bible;
 use ApiBibleClient\Api\Model\Book;
 use ApiBibleClient\Api\Model\Chapter;
 use ApiBibleClient\Api\Model\Passage;
+use ApiBibleClient\Api\Model\Verse;
 
 /**
  * Class Bibles
  * @package ApiBibleClient\Api\Resource
  */
 class Bibles extends ResourceBase {
-    /**
-     *
-     */
+
     public const URI = '/bibles';
-    /**
-     *
-     */
     public const URI_ALL_BOOKS = '/bibles/%s/books';
-    /**
-     *
-     */
-    public const URI_GET_BOOK = '/bibles/%s/books/%s';
-    /**
-     *
-     */
     public const URI_ALL_CHAPTERS = '/bibles/%s/books/%s/chapters';
-    /**
-     *
-     */
-    public const URI_GET_CHAPTER = '/bibles/%s/chapters/%s';    /**
-     *
-     */
+    public const URI_ALL_VERSES = '/bibles/%s/chapters/%s/verses';
+    public const URI_GET_BOOK = '/bibles/%s/books/%s';
+    public const URI_GET_CHAPTER = '/bibles/%s/chapters/%s';
     public const URI_GET_PASSAGE = '/bibles/%s/passages/%s';
+    public const URI_GET_VERSE = '/bibles/%s/verses/%s';
 
     /**
      * @param array $params
@@ -69,6 +57,17 @@ class Bibles extends ResourceBase {
         $content = $this->client->request(self::BASE_URI . sprintf(self::URI_ALL_CHAPTERS, $bibleId, $bookId))->getContent();
 
         return ChapterSummaryCollection::createFromArray($content['data']);
+    }
+
+    /**
+     * @param string $bibleId
+     * @param string $chapterId
+     * @return VerseSummaryCollection
+     */
+    public function allVerses(string $bibleId, string $chapterId): VerseSummaryCollection {
+        $content = $this->client->request(self::BASE_URI . sprintf(self::URI_ALL_VERSES, $bibleId, $chapterId))->getContent();
+
+        return VerseSummaryCollection::createFromArray($content['data']);
     }
 
     /**
@@ -117,6 +116,18 @@ class Bibles extends ResourceBase {
         $content = $this->client->request(self::BASE_URI . sprintf(self::URI_GET_PASSAGE, $bibleId, $passageId), $params)->getContent();
 
         return Passage::createFromArray($content['data']);
+    }
+
+    /**
+     * @param string $bibleId
+     * @param string $passageId
+     * @param array  $params
+     * @return Verse
+     */
+    public function getVerse(string $bibleId, string $passageId, array $params = []): Verse {
+        $content = $this->client->request(self::BASE_URI . sprintf(self::URI_GET_VERSE, $bibleId, $passageId), $params)->getContent();
+
+        return Verse::createFromArray($content['data']);
     }
 
 }

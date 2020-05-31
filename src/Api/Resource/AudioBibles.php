@@ -8,32 +8,17 @@ use ApiBibleClient\Api\Collection\ChapterSummaryCollection;
 use ApiBibleClient\Api\Model\AudioBible;
 use ApiBibleClient\Api\Model\AudioChapter;
 use ApiBibleClient\Api\Model\Book;
-use ApiBibleClient\Api\Model\ChapterSummary;
 
 /**
  * Class AudioBibles
  * @package ApiBibleClient\Api\Resource
  */
 class AudioBibles extends ResourceBase {
-    /**
-     *
-     */
+
     public const URI = '/audio-bibles';
-    /**
-     *
-     */
     public const URI_ALL_BOOKS = '/audio-bibles/%s/books';
-    /**
-     *
-     */
     public const URI_GET_BOOK = '/audio-bibles/%s/books/%s';
-    /**
-     *
-     */
     public const URI_ALL_CHAPTERS = '/audio-bibles/%s/books/%s/chapters';
-    /**
-     *
-     */
     public const URI_GET_CHAPTER = '/audio-bibles/%s/chapters/%s';
 
     /**

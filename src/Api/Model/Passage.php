@@ -22,7 +22,7 @@ final class Passage {
     private $copyright;
 
     /**
-     * Country constructor.
+     * Passage constructor.
      * @param string $id
      * @param string $bibleId
      * @param string $orgId

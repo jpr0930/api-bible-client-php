@@ -24,7 +24,7 @@ final class AudioChapter extends ChapterSummary {
     private $meta;
 
     /**
-     * Chapter constructor.
+     * AudioChapter constructor.
      * @param string      $id
      * @param string      $bibleId
      * @param string      $number
