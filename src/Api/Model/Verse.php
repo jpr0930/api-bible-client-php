@@ -42,7 +42,7 @@ final class Verse extends VerseSummary {
         ?array $next,
         ?array $previous
     ) {
-        parent::__construct($id, $orgId, $bibleId, $bookId, $chapterId, $reference);
+        parent::__construct($id, $orgId, $bibleId, $chapterId, $bookId, $reference);
 
         $this->content   = $content;
         $this->copyright = $copyright;
