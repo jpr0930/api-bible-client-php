@@ -22,8 +22,8 @@ final class Verse extends VerseSummary {
      * @param string      $id
      * @param string      $orgId
      * @param string      $bibleId
-     * @param string      $bookId
      * @param string      $chapterId
+     * @param string      $bookId
      * @param string|null $reference
      * @param string      $content
      * @param string      $copyright

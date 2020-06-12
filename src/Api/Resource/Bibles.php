@@ -10,6 +10,7 @@ use ApiBibleClient\Api\Model\Bible;
 use ApiBibleClient\Api\Model\Book;
 use ApiBibleClient\Api\Model\Chapter;
 use ApiBibleClient\Api\Model\Passage;
+use ApiBibleClient\Api\Model\SearchResponse;
 use ApiBibleClient\Api\Model\Verse;
 
 /**
@@ -26,6 +27,7 @@ class Bibles extends ResourceBase {
     public const URI_GET_CHAPTER = '/bibles/%s/chapters/%s';
     public const URI_GET_PASSAGE = '/bibles/%s/passages/%s';
     public const URI_GET_VERSE = '/bibles/%s/verses/%s';
+    public const URI_SEARCH = '/bibles/%s/search';
 
     /**
      * @param array $params
@@ -128,6 +130,17 @@ class Bibles extends ResourceBase {
         $content = $this->client->request(self::BASE_URI . sprintf(self::URI_GET_VERSE, $bibleId, $passageId), $params)->getContent();
 
         return Verse::createFromArray($content['data']);
+    }
+
+    /**
+     * @param string $bibleId
+     * @param array  $params
+     * @return SearchResponse
+     */
+    public function search(string $bibleId, array $params = []): SearchResponse {
+        $content = $this->client->request(self::BASE_URI . sprintf(self::URI_SEARCH, $bibleId), $params)->getContent();
+
+        return SearchResponse::createFromArray($content['data']);
     }
 
 }
